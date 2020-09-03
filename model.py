@@ -1,4 +1,5 @@
 
+
 class Person:
     def __init__(self, name, birthday, cpf, rg, address):
         self.name = name
@@ -13,5 +14,3 @@ class Guest(Person):
         super().__init__(name, birthday, cpf, rg, address)
         self.dailys = 0
         self.apt = apt
-
-
