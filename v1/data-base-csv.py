@@ -3,6 +3,11 @@
 import pandas as pd 
 import requests
 
+# The function recives a dict with address data and returns a list w/ them
+#def list_address(dict):
+
+
+
 # The function recives a CEP and returns a dict with data about address
 def address_data(cep):
     if len(cep) != 8:
@@ -12,6 +17,11 @@ def address_data(cep):
     address = r.json()
     return address
 
+
+
+
     
+
+
 
 

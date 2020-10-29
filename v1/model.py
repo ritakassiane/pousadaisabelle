@@ -36,3 +36,49 @@ class Employee(Person):
 
 
 
+########----########
+
+class Room:
+    def __init__(self, id, idtype,double_bed, single_bed): # O id identifica o numero do quarto, idtype é o id que identifica o tipo de quarto
+        self.id = id 
+        self.idtype = idtype
+        self.double_bed = double_bed
+        self.single_bed = single_bed
+
+class Room_Type:
+    def __init__(self, id, name, description, daily_price):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.daily_price = daily_price
+
+class Booking:
+    def __init__(self, id, previous_checkin, previous_checkout, id_roomtype, id_guest):
+        self.id = id
+        self.previous_checkin = previous_checkin
+        self.previous_checkout = previous_checkout
+        self.id_roomtype = id_roomtype
+        self.id_guest = id_guest
+
+class Accommodation:
+    def __init__(self, id, checkin_date, checkout_date, checkin_time, checkout_time, room_id, guest_id):
+        self.id = id 
+        self.checkin_date = checkin_date
+        self.checkout_date = checkout_date
+        self. checkin_time = checkin_time 
+        self. checkout_time = checkout_time 
+        self.room_id = room_id
+        self.guest_id = guest_id
+
+class Payment: 
+    def __init__(self, id, total_value, date, time, accommodation_id):
+        self.id = id
+        self.total_value = total_value
+        self.date = date
+        self.time = time
+        self.accommodation_id = accommodation_id
+
+class PaymentType:
+    def __init__(self):
+        self.options = ["Dinheiro", "Crédito", "Débito"]
+
