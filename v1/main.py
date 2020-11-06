@@ -1,14 +1,14 @@
 import model 
 
-init = """ 
- ##########################
-#    SEJA BEM VINDO       #
- ##########################
-"""
-opcoes = """ 
-    1. Cadastrar
-    2. Sair
-"""
+# init = """ 
+#  ##########################
+# #    SEJA BEM VINDO       #
+#  ##########################
+# """
+# opcoes = """ 
+#     1. Cadastrar
+#     2. Sair
+# """
 def address_data(cep):
     if len(cep) != 8:
         print('CEP inválido!')
@@ -18,7 +18,7 @@ def address_data(cep):
     return address
 
 
-def cadastro():7
+def cadastro(name, bir):
     
     name = input('Nome:')
     birthday = input('Aniversário [dia-mes-ano]:')
@@ -28,4 +28,18 @@ def cadastro():7
     phone = input("Numero de telefone: ")
     person = model.Person(name, birthday, cpf, '', address_data(cep),email, phone)
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

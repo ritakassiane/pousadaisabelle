@@ -82,3 +82,20 @@ class PaymentType:
     def __init__(self):
         self.options = ["Dinheiro", "Crédito", "Débito"]
 
+class Consumption:
+    def __init__(self, id, amount, idEmployee, idGuest, idItem):
+        self.id = id
+        self.amount = amount
+        self.idEmployee = idEmployee
+        self.idGuest = idGuest
+        self.idItem = idItem
+        
+class ConsumptionItem: # The instance from this class is a consumption item
+    def __init__(self, idItem, name_item, description, price):
+        self.idItem = idItem
+        self.name_item = name_item 
+        self.description = description
+        self.price = price 
+
+        
+    
