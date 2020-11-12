@@ -1,4 +1,10 @@
 from datetime import date
+import requests
+from xlsxwriter import Workbook
+import pandas as pd 
+
+lista_de_pessoas = []
+
 class Person:
     def __init__(self, name, birthday, cpf, rg, address, email, number):
         self.name = name
@@ -97,5 +103,60 @@ class ConsumptionItem: # The instance from this class is a consumption item
         self.description = description
         self.price = price 
 
-        
+### ADDRESS ##
+
+class Address:
+    def __init__(self, cep):
+        self.cep = cep 
     
+    def address_data(self):
+        if len(self.cep) != 8:
+            print("CEP Inválido")
+            self.cep = input("Digite novamente:")
+        r = requests.get('https://viacep.com.br/ws/{}/json/'.format(self.cep))
+        address = r.json()
+        return address
+## TESTANDO ##
+
+# A função abaixo recebe um dicionario e retorna uma lista com todos os suas chaves. 
+def return_keys(dict):
+    lista = []
+    for i in dict.keys():
+        lista.append(i)
+    return lista 
+
+def anda_nas_pessoas():
+    for i in lista_de_pessoas:
+        print(i.__dict__)
+
+def create_person(nome, niver, cpf, rg, email, cep, phone):
+    pessoa = Person(nome, niver, cpf, rg, email, cep, phone)
+    lista_de_pessoas.append(pessoa)
+    return lista_de_pessoas
+
+# A função a baixo recebe uma lista de objetos e retorna uma lista de dicionários com tais.
+
+def obj_to_dict(list_object):
+    list_of_dict = []
+    for objecto in list_object:
+        list_of_dict.append(objecto.__dict__)
+
+    return list_of_dict
+
+
+
+
+create_person('Rita','16-04-2000', '04211617524', '0548094', 'contaritakassiane@hotmail.com', '48760000', '75-99284099')
+print(lista_de_pessoas)
+lista_de_dicionario = obj_to_dict(lista_de_pessoas)
+df = pd.DataFrame.from_dict(lista_de_dicionario)
+print(df)
+
+with pd.ExcelWriter('data-base-people.xlsx', mode='w') as writer:
+    df.to_excel(writer, sheet_name='date')
+    writer.save()
+
+
+
+
+
